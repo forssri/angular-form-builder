@@ -1,0 +1,25 @@
+<div class="container-fluid">
+
+	<h2>Layout built using layout builder</h2>
+	<app-layout-builder [layoutTree]="tree" [formSchema]="fSchema" [form]="form">
+
+	</app-layout-builder>
+
+	<h2>Layout Tree</h2>
+	<pre>
+  {{tree | json}}
+</pre>
+
+	<h2>Form Schema</h2>
+	<pre>
+  {{fSchema | json}}
+</pre>
+
+	<h2>Form Value</h2>
+	<pre>
+  {{form.value | json}}
+</pre>
+
+
+
+</div>

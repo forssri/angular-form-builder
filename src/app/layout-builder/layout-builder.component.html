@@ -1,0 +1,40 @@
+<ng-container *ngIf="layoutTree">
+
+	<ng-container [ngSwitch]="layoutTree.selector">
+
+		<ng-container *ngSwitchCase="layoutType.ROW">
+			<div class="row">
+				<app-layout-builder *ngFor="let childeNode of layoutTree.content" [layoutTree]="childeNode" [formSchema]="formSchema" [form]="form">
+
+				</app-layout-builder>
+			</div>
+		</ng-container>
+
+		<ng-container *ngSwitchCase="layoutType.COLUMN">
+			<div [ngClass]="layoutTree.classList">
+				<app-layout-builder *ngFor="let childeNode of layoutTree.content" [layoutTree]="childeNode" [formSchema]="formSchema" [form]="form">
+
+				</app-layout-builder>
+			</div>
+		</ng-container>
+
+		<ng-container *ngSwitchDefault>
+			<div [formGroup]="form">
+				<label>{{formSchema[layoutTree.selector].label}}</label>
+      <br />
+      <ng-container [ngSwitch]="formSchema[layoutTree.selector].type">
+      <ng-container *ngSwitchCase="custom_phone">
+        <input type="date" /> 
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+       
+      <input [type]="formSchema[layoutTree.selector].type" [formControlName]="layoutTree.selector" [name]="layoutTree.selector" />
+      </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+
+
+</ng-container>
+
+</ng-container>
